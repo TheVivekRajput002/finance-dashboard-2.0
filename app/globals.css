@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   Google Fonts
+═══════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ═══════════════════════════════════════════════
+   Design Token Color Palette (MD3-inspired)
+═══════════════════════════════════════════════ */
+@theme {
+  --color-primary: #005e9f;
+  --color-primary-dim: #00528b;
+  --color-primary-container: #44a5ff;
+  --color-primary-fixed: #44a5ff;
+  --color-primary-fixed-dim: #2498f5;
+  --color-inverse-primary: #2498f5;
+
+  --color-on-primary: #edf3ff;
+  --color-on-primary-container: #002442;
+  --color-on-primary-fixed: #000000;
+  --color-on-primary-fixed-variant: #002e51;
+
+  --color-secondary: #4f5d67;
+  --color-secondary-dim: #43525a;
+  --color-secondary-fixed: #d6e5ef;
+  --color-secondary-fixed-dim: #c8d6e1;
+  --color-secondary-container: #d6e5ef;
+
+  --color-on-secondary: #e7f5ff;
+  --color-on-secondary-fixed: #33414a;
+  --color-on-secondary-fixed-variant: #4f5d67;
+  --color-on-secondary-container: #46545d;
+
+  --color-tertiary: #006b1b;
+  --color-tertiary-dim: #005d16;
+  --color-tertiary-fixed: #91f78e;
+  --color-tertiary-fixed-dim: #83e881;
+  --color-tertiary-container: #91f78e;
+
+  --color-on-tertiary: #d1ffc8;
+  --color-on-tertiary-fixed: #00480f;
+  --color-on-tertiary-fixed-variant: #00691a;
+  --color-on-tertiary-container: #005e17;
+
+  --color-error: #b31b25;
+  --color-error-dim: #9f0519;
+  --color-error-container: #fb5151;
+  --color-on-error: #ffefee;
+  --color-on-error-container: #570008;
+
+  --color-surface: #f5f7f9;
+  --color-surface-dim: #d0d5d8;
+  --color-surface-bright: #f5f7f9;
+  --color-surface-variant: #d9dde0;
+  --color-surface-tint: #005e9f;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eef1f3;
+  --color-surface-container: #e5e9eb;
+  --color-surface-container-high: #dfe3e6;
+  --color-surface-container-highest: #d9dde0;
+
+  --color-background: #f5f7f9;
+  --color-on-background: #2c2f31;
+  --color-on-surface: #2c2f31;
+  --color-on-surface-variant: #595c5e;
+  --color-inverse-surface: #0b0f10;
+  --color-inverse-on-surface: #9a9d9f;
+
+  --color-outline: #747779;
+  --color-outline-variant: #abadaf;
+
+  /* Font families */
+  --font-headline: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Inter', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════
+   Global Base
+═══════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-on-surface);
+  background: radial-gradient(circle at 0% 0%, #e7f5ff 0%, #f5f7f9 50%),
+              radial-gradient(circle at 100% 100%, #d1ffc8 0%, #f5f7f9 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ═══════════════════════════════════════════════
+   Reusable Glass Utilities
+═══════════════════════════════════════════════ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.04);
+}
+
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-topbar {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.cylinder-gradient {
+  background: linear-gradient(180deg, #90CAF9 0%, #005e9f 100%);
+  box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.1), inset 4px 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.green-cylinder {
+  background: linear-gradient(180deg, #91f78e 0%, #006b1b 100%);
+  box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.1), inset 4px 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* ═══════════════════════════════════════════════
+   Scrollbar
+═══════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 94, 159, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 94, 159, 0.4);
+}
