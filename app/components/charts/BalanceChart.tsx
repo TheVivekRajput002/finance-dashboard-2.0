@@ -77,7 +77,7 @@ export default function BalanceChart({ data }: BalanceChartProps) {
       </div>
 
       {/* Chart */}
-      <div className="flex-1 min-h-[260px]">
+      <div className="h-[280px]">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={filtered} margin={{ top: 5, right: 5, left: -10, bottom: 0 }}>
             <defs>

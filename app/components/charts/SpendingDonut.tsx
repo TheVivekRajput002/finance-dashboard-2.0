@@ -58,7 +58,7 @@ export default function SpendingDonut({ data, total }: SpendingDonutProps) {
       </div>
 
       {/* Center label */}
-      <div className="flex-1 relative min-h-[220px]">
+      <div className="h-[260px] relative">
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie

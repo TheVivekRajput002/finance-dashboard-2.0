@@ -233,12 +233,12 @@ app/
 - `[ ]` AI Intelligence / Insights card
 
 ## Task 5 — Transactions Page (`/transactions`)
-- `[ ]` Transaction table with all columns
-- `[ ]` Search (debounced), type filter, category filter, date range, sort
-- `[ ]` Pagination (10/20 rows)
-- `[ ]` Admin: Edit/Delete per row + FAB Add button → modal
-- `[ ]` Viewer: actions hidden
-- `[ ]` Empty state
+- `[x]` Transaction table with all columns
+- `[x]` Search (debounced), type filter, category filter, date range, sort
+- `[x]` Pagination (10/20 rows)
+- `[x]` Admin: Edit/Delete per row + FAB Add button → modal
+- `[x]` Viewer: actions hidden
+- `[x]` Empty state
 
 ## Task 6 — Insights Page (`/insights`)
 - `[ ]` Hero section
