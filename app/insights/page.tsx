@@ -558,21 +558,27 @@ export default function InsightsPage() {
               </span>
             </div>
 
-            {/* Mini bar chart — custom CSS bars */}
-            <div className="flex items-end gap-3 h-28">
+            {/* Mini bar chart — pixel-height bars (% heights don't work on unsized flex children) */}
+            <div className="flex items-end gap-2 h-28">
               {dailyVelocityData.map((day, i) => {
-                const pct = (day.spend / maxDailySpend) * 100;
-                const isHighest = day.spend === maxDailySpend;
+                // h-28 = 112px. Compute exact pixel height from that.
+                const barPx = Math.max(Math.round((day.spend / maxDailySpend) * 112), 8);
+                const isHighest = day.spend === maxDailySpend && day.spend > 0;
                 return (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-2">
+                  <div
+                    key={i}
+                    className="flex-1"
+                    title={`${day.label}: ${fmt(day.spend)}`}
+                  >
                     <div
                       className={`w-full rounded-t-xl transition-all cursor-pointer ${
                         isHighest
                           ? 'bg-primary shadow-lg shadow-primary/20'
-                          : 'bg-primary/20 hover:bg-primary/40'
+                          : day.spend > 0
+                          ? 'bg-primary/25 hover:bg-primary/50'
+                          : 'bg-surface-container-high/60'
                       }`}
-                      style={{ height: `${Math.max(pct, 6)}%` }}
-                      title={`${day.label}: ${fmt(day.spend)}`}
+                      style={{ height: `${barPx}px` }}
                     />
                   </div>
                 );
@@ -580,7 +586,7 @@ export default function InsightsPage() {
             </div>
 
             {/* Day labels */}
-            <div className="flex justify-between mt-3">
+            <div className="flex gap-2 mt-2">
               {dailyVelocityData.map((day, i) => (
                 <span
                   key={i}
