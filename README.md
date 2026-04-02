@@ -62,18 +62,6 @@ cd finance-dashboard-2.0/my-app
 pnpm install
 ```
 
-### Environment Setup
-
-This project has **no required environment variables** — it runs entirely client-side with mock data seeded on first load.
-
-If you ever wire up a real API, create a `.env.local` at the project root:
-
-```bash
-cp .env.example .env.local   # (if provided)
-```
-
-See [Environment Variables](#environment-variables) for the full table.
-
 ### Run Locally
 
 ```bash
@@ -156,72 +144,9 @@ Browser (Client-only)
 
 ---
 
-## API Endpoints
-
-This is a **fully client-side app** — there are no HTTP API endpoints. All data operations go through the Zustand store:
-
-| Action | Store Method | Trigger |
-|---|---|---|
-| Load transactions | Hydrated from `localStorage` on mount | App load |
-| Add transaction | `addTransaction(tx)` | Admin submits modal |
-| Edit transaction | `editTransaction(id, updates)` | Admin edits row |
-| Delete transaction | `deleteTransaction(id)` | Admin confirms delete |
-| Switch role | `setRole('admin' \| 'viewer')` | RoleToggle click |
-
-> If you extend Clerio with a real backend, the recommended pattern is to wrap these store methods with `fetch` calls and keep the UI layer unchanged.
-
----
-
-## Environment Variables
-
-No environment variables are required to run this project. The table below documents keys you would add if extending with external services:
-
-| Variable | Required | Description |
-|---|---|---|
-| `NEXT_PUBLIC_APP_URL` | No | Public base URL (e.g. `https://clerio.vercel.app`) |
-| `NEXT_PUBLIC_API_URL` | No | Backend API base URL if wiring a real server |
-| `DATABASE_URL` | No | Connection string if adding a database layer |
-
-Add variables to `.env.local` (never commit this file — it's in `.gitignore`):
-
-```bash
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
----
-
-## Testing
-
-No automated test suite is included in the current version. The recommended setup for future tests:
-
-```bash
-# Install Vitest + React Testing Library
-pnpm add -D vitest @testing-library/react @testing-library/jest-dom jsdom
-
-# Run tests
-pnpm test
-```
-
-**Manual verification checklist:**
-- [ ] All 3 routes render without console errors
-- [ ] KPI cards show correct totals from mock data
-- [ ] Transaction filters + search return correct results
-- [ ] Role toggle hides/shows Admin actions correctly
-- [ ] Add / Edit / Delete transaction persists across page refresh
-- [ ] Charts render with data on all breakpoints
-- [ ] Sidebar visible on desktop; bottom nav visible on mobile
-
----
-
 ## Deployment
 
-The easiest way to deploy is **Vercel** — zero config required for Next.js.
-
-| Platform | Steps |
-|---|---|
-| **Vercel** | Push to GitHub → Import repo at [vercel.com/new](https://vercel.com/new) → Deploy (auto-detects Next.js) |
-| **Netlify** | `pnpm build` → deploy the `.next/` output with `@netlify/plugin-nextjs` |
-| **Self-hosted** | `pnpm build && pnpm start` on any Node.js 18+ server |
+Deployed on vercel
 
 ```bash
 # Production build
@@ -239,17 +164,6 @@ pnpm start
 2. Create a feature branch: `git checkout -b feat/your-feature`
 3. Commit with a clear message: `git commit -m "feat: add budget goal tracker"`
 4. Push and open a Pull Request against `main`
-
-**Branch naming:**
-- `feat/*` — new features
-- `fix/*` — bug fixes
-- `chore/*` — maintenance (deps, config, docs)
-
----
-
-## License
-
-This project is open source under the **MIT License**.
 
 ---
 
