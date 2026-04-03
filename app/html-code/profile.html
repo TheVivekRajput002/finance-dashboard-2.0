@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title content="Profile - Clerio Style">Profile - Clerio Finance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-bevel {
+            box-shadow: inset 0 0.5px 0 0 rgba(255, 255, 255, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#d6e5ef",
+                        "tertiary-container": "#91f78e",
+                        "on-error-container": "#570008",
+                        "on-primary-fixed-variant": "#002e51",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f5f7f9",
+                        "surface-container": "#e5e9eb",
+                        "on-secondary": "#e7f5ff",
+                        "primary-fixed-dim": "#2498f5",
+                        "primary-container": "#44a5ff",
+                        "on-primary-fixed": "#000000",
+                        "surface-dim": "#d0d5d8",
+                        "on-primary-container": "#002442",
+                        "surface-container-high": "#dfe3e6",
+                        "on-background": "#2c2f31",
+                        "secondary-fixed-dim": "#c8d6e1",
+                        "error-container": "#fb5151",
+                        "on-secondary-container": "#46545d",
+                        "inverse-surface": "#0b0f10",
+                        "surface-tint": "#005e9f",
+                        "tertiary": "#006b1b",
+                        "on-tertiary-container": "#005e17",
+                        "on-surface-variant": "#595c5e",
+                        "surface-bright": "#f5f7f9",
+                        "outline-variant": "#abadaf",
+                        "on-secondary-fixed": "#33414a",
+                        "primary-fixed": "#44a5ff",
+                        "on-surface": "#2c2f31",
+                        "inverse-primary": "#2498f5",
+                        "on-tertiary": "#d1ffc8",
+                        "primary-dim": "#00528b",
+                        "tertiary-fixed": "#91f78e",
+                        "surface-container-low": "#eef1f3",
+                        "surface": "#f5f7f9",
+                        "surface-container-highest": "#d9dde0",
+                        "secondary-dim": "#43525a",
+                        "on-tertiary-fixed": "#00480f",
+                        "error": "#b31b25",
+                        "outline": "#747779",
+                        "primary": "#005e9f",
+                        "on-primary": "#edf3ff",
+                        "surface-variant": "#d9dde0",
+                        "on-tertiary-fixed-variant": "#00691a",
+                        "on-secondary-fixed-variant": "#4f5d67",
+                        "secondary": "#4f5d67",
+                        "error-dim": "#9f0519",
+                        "tertiary-fixed-dim": "#83e881",
+                        "tertiary-dim": "#005d16",
+                        "on-error": "#ffefee",
+                        "secondary-fixed": "#d6e5ef",
+                        "inverse-on-surface": "#9a9d9f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen selection:bg-primary-container/30">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full z-40 flex flex-col p-6 hidden md:flex w-72 bg-white/30 backdrop-blur-3xl rounded-[3rem] m-4 h-[calc(100vh-2rem)] shadow-2xl shadow-blue-900/5">
+<div class="mb-10 px-4">
+<h1 class="font-headline font-black text-xl text-blue-900">Clerio</h1>
+<p class="font-label font-medium text-xs text-slate-500 uppercase tracking-widest">Wealth Management</p>
+</div>
+<nav class="flex-1 space-y-4">
+<a class="text-slate-600 px-4 py-3 flex items-center gap-3 hover:translate-x-1 transition-transform font-label font-medium text-sm rounded-full hover:bg-white/20" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="text-slate-600 px-4 py-3 flex items-center gap-3 hover:translate-x-1 transition-transform font-label font-medium text-sm rounded-full hover:bg-white/20" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Transactions</span>
+</a>
+<a class="text-slate-600 px-4 py-3 flex items-center gap-3 hover:translate-x-1 transition-transform font-label font-medium text-sm rounded-full hover:bg-white/20" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span>Insights</span>
+</a>
+<a class="bg-blue-500/10 text-blue-700 rounded-full px-4 py-3 flex items-center gap-3 shadow-inner font-label font-medium text-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined">tune</span>
+<span>Preferences</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/20 space-y-4">
+<a class="text-slate-600 px-4 py-3 flex items-center gap-3 hover:translate-x-1 transition-transform font-label font-medium text-sm rounded-full hover:bg-white/20" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+<a class="text-slate-600 px-4 py-3 flex items-center gap-3 hover:translate-x-1 transition-transform font-label font-medium text-sm rounded-full hover:bg-white/20" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="p-12 min-h-screen relative overflow-hidden md:ml-80">
+<!-- Atmospheric Glows -->
+<div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary-container/20 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-tertiary-container/10 rounded-full blur-[100px] -z-10"></div>
+<div class="max-w-5xl mx-auto space-y-12">
+<!-- User Profile Header -->
+<section class="flex flex-col md:flex-row items-center md:items-end gap-8 bg-surface-container-low/40 backdrop-blur-3xl p-8 rounded-xl glass-bevel">
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-tr from-primary to-primary-container rounded-full blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+<img alt="Alex Rivera" class="relative w-40 h-40 rounded-full object-cover border-4 border-surface-container-lowest shadow-xl shadow-primary/10" data-alt="Close-up portrait of a professional man with short dark hair and a confident expression, studio lighting, clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwRIEUe1d6htuwZtaZSxCSoO2MWp818WcpcsqyuDGDxTZxQDqNsDMs_XJWQ8VeIz_jAB_eTrfP-isMr9T816_nBp2Ghq_OoqQfoGqgH-iR_a8jYN6HgBHUA7b06n8KDu7yH6g2ARziJTjChzuNXMkWjSxEk_XfsRll1DhB-21I3NldnDBFRO0BcJjZauzlMtG8KG5qB2he6LE37OYHuEQYoKBNWJzoPFr3l7bhReQb1XkgVUEjjTwX48UgDkc_GBCWkScATfMXW2ZA"/>
+<button class="absolute bottom-2 right-2 p-2 bg-primary text-on-primary rounded-full shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<div class="text-center md:text-left flex-1">
+<div class="flex flex-col md:flex-row items-center gap-4 mb-2">
+<h2 class="text-4xl font-extrabold font-headline text-on-background tracking-tight">Alex Rivera</h2>
+<span class="px-4 py-1 bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest rounded-full border border-primary/20">Admin Status</span>
+</div>
+<p class="text-on-surface-variant font-medium mb-6">Senior Financial Systems Architect</p>
+<div class="flex flex-wrap gap-4 justify-center md:justify-start">
+<div class="flex items-center gap-2 text-sm text-on-surface-variant bg-surface-container-highest/30 px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-lg" data-icon="location_on">location_on</span> New York, NY
+                        </div>
+<div class="flex items-center gap-2 text-sm text-on-surface-variant bg-surface-container-highest/30 px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span> Joined March 2021
+                        </div>
+</div>
+</div>
+</section>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Left Column: Settings -->
+<div class="lg:col-span-2 space-y-8">
+<!-- Account Settings -->
+<section class="bg-surface-container-lowest glass-bevel p-8 rounded-xl border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold font-headline flex items-center gap-3">
+<span class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</span>
+                                Account Settings
+                            </h3>
+<button class="text-primary font-bold text-sm hover:underline">Reset Defaults</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Full Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-4 text-on-background font-medium focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" type="text" value="Alex Rivera"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Email Address</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-4 text-on-background font-medium focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" type="email" value="alex.rivera@clerio.com"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Phone Number</label>
+<div class="flex gap-4">
+<select class="w-32 bg-surface-container-low border-none rounded-lg p-4 text-on-background font-medium focus:ring-2 focus:ring-primary/20">
+<option>+1 (US)</option>
+<option>+44 (UK)</option>
+<option>+49 (DE)</option>
+</select>
+<input class="flex-1 bg-surface-container-low border-none rounded-lg p-4 text-on-background font-medium focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" type="tel" value="555-0123-4567"/>
+</div>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all">Save Changes</button>
+</div>
+</section>
+<!-- Security Section -->
+<section class="bg-surface-container-lowest glass-bevel p-8 rounded-xl border border-outline-variant/10">
+<h3 class="text-xl font-bold font-headline flex items-center gap-3 mb-8">
+<span class="w-10 h-10 rounded-xl bg-error/10 text-error flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</span>
+                            Security &amp; Access
+                        </h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="password">password</span>
+<div>
+<p class="font-bold text-on-background">Password Authentication</p>
+<p class="text-xs text-on-surface-variant">Last changed 3 months ago</p>
+</div>
+</div>
+<button class="text-primary font-bold text-sm bg-primary/10 px-6 py-2 rounded-full hover:bg-primary/20 transition-colors">Change</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low/50 rounded-xl">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="vibration">vibration</span>
+<div>
+<p class="font-bold text-on-background">Two-factor authentication (2FA)</p>
+<p class="text-xs text-on-surface-variant">Secure your account with SMS or App codes</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Membership & Preferences -->
+<div class="space-y-8">
+<!-- Membership Details Card -->
+<section class="relative group p-1 rounded-xl overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-container to-tertiary-container animate-pulse opacity-20"></div>
+<div class="relative bg-on-primary-container p-8 rounded-xl h-full flex flex-col justify-between text-on-primary">
+<div>
+<div class="flex justify-between items-start mb-6">
+<span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase tracking-widest backdrop-blur-md">Active Plan</span>
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<h4 class="text-2xl font-black font-headline mb-1">Premium Tier</h4>
+<p class="text-on-primary/60 text-sm mb-6">Unlimited transfers, enterprise analytics, and 24/7 dedicated support.</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between text-sm">
+<span class="text-on-primary/70">Next Billing Date</span>
+<span class="font-bold">Oct 12, 2024</span>
+</div>
+<div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed h-full w-3/4 rounded-full"></div>
+</div>
+<button class="w-full py-4 bg-surface-container-lowest text-primary font-bold rounded-xl hover:bg-on-primary transition-colors">Manage Subscription</button>
+</div>
+</div>
+</section>
+<!-- App Preferences -->
+<section class="bg-surface-container-lowest glass-bevel p-8 rounded-xl border border-outline-variant/10">
+<h3 class="text-lg font-bold font-headline mb-6">App Preferences</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Default Currency</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg p-3 text-on-background font-medium focus:ring-2 focus:ring-primary/20">
+<option>USD - US Dollar ($)</option>
+<option>EUR - Euro (€)</option>
+<option>GBP - British Pound (£)</option>
+<option>JPY - Japanese Yen (¥)</option>
+</select>
+</div>
+<hr class="border-outline-variant/10"/>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="notifications_active">notifications_active</span>
+<span class="text-sm font-semibold">Push Notifications</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="dark_mode">dark_mode</span>
+<span class="text-sm font-semibold">Dark Mode</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-xl" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-sm font-semibold">Smart Insights</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Danger Zone -->
+<section class="mt-8 bg-error-container/5 p-8 rounded-xl border border-error/10">
+<div class="flex flex-col md:flex-row items-center justify-between gap-6">
+<div>
+<h3 class="text-xl font-bold font-headline text-error mb-1">Danger Zone</h3>
+<p class="text-on-surface-variant text-sm">Once you delete your account, there is no going back. Please be certain.</p>
+</div>
+<button class="px-8 py-3 rounded-full border border-error/30 text-error font-bold hover:bg-error hover:text-white transition-all duration-300">Deactivate Account</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Only for specific profile actions like downloading data) -->
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl shadow-primary/40 flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="cloud_download">cloud_download</span>
+</button>
+</body></html>

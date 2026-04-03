@@ -161,7 +161,7 @@ export default function TransactionsPage() {
 
   return (
     <DashboardLayout>
-      <div className="pt-8 px-6 pb-20 max-w-7xl mx-auto">
+      <div className="pt-8 pb-20 max-w-7xl mx-auto">
         {/* Header Section */}
       <section className="mb-12 relative flex justify-between items-end">
         <div className="absolute -top-24 -right-12 w-64 h-64 bg-primary-container/20 rounded-full blur-[100px] pointer-events-none"></div>

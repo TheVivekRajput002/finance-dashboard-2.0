@@ -237,7 +237,7 @@ export default function InsightsPage() {
 
   return (
     <DashboardLayout>
-      <div className="pt-8 px-6 pb-28 max-w-7xl mx-auto space-y-8">
+      <div className="pt-8 pb-28 max-w-7xl mx-auto space-y-8">
 
         {/* ── Hero Section ─────────────────────────────────────── */}
         <section className="relative overflow-hidden rounded-3xl p-10 bg-linear-to-br from-white to-surface-container/30 border border-white/50 shadow-sm">
