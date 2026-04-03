@@ -6,7 +6,7 @@ import {
   LayoutDashboard,
   ReceiptText,
   Lightbulb,
-  Settings,
+  User,
   HelpCircle,
   Wallet,
 } from 'lucide-react';
@@ -18,7 +18,7 @@ const NAV_LINKS = [
 ];
 
 const BOTTOM_LINKS = [
-  { href: '/settings', label: 'Settings', icon: Settings },
+  { href: '/profile', label: 'Profile', icon: User },
   { href: '/support', label: 'Support', icon: HelpCircle },
 ];
 
@@ -69,16 +69,23 @@ export default function Sidebar() {
 
         {/* Bottom Links */}
         <div className="border-t border-white/20 pt-4 flex flex-col gap-1">
-          {BOTTOM_LINKS.map(({ href, label, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              className="flex items-center gap-3 px-4 py-3 rounded-full text-sm font-medium text-slate-500 hover:translate-x-1 hover:bg-white/30 transition-all duration-200"
-            >
-              <Icon size={18} className="text-slate-400" />
-              <span>{label}</span>
-            </Link>
-          ))}
+          {BOTTOM_LINKS.map(({ href, label, icon: Icon }) => {
+            const isActive = pathname === href;
+            return (
+              <Link
+                key={href}
+                href={href}
+                className={`flex items-center gap-3 px-4 py-3 rounded-full text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? 'bg-blue-500/10 text-blue-700 shadow-inner font-semibold'
+                    : 'text-slate-500 hover:translate-x-1 hover:bg-white/30'
+                }`}
+              >
+                <Icon size={18} className={isActive ? 'text-blue-600' : 'text-slate-400'} />
+                <span>{label}</span>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </aside>
