@@ -255,7 +255,8 @@ export default function TransactionsPage() {
 
       {/* Transaction Table */}
       <div className="glass-card rounded-2xl overflow-hidden bevel-reflection border border-white/40">
-        <div className="overflow-x-auto min-h-[400px]">
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto min-h-[400px]">
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-white/20">
@@ -352,6 +353,72 @@ export default function TransactionsPage() {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden flex flex-col divide-y divide-white/10 min-h-[400px]">
+          {paginatedData.length === 0 ? (
+            <div className="px-6 py-12 text-center flex flex-col items-center justify-center text-on-surface-variant/60">
+              <Search size={40} className="mb-4 opacity-50" />
+              <p className="font-bold text-lg">No transactions found</p>
+              <p className="text-sm">Try modifying your filters or search term.</p>
+            </div>
+          ) : (
+            paginatedData.map((tx) => {
+              const Icon = CATEGORY_ICONS[tx.category] || CATEGORY_ICONS.Other;
+              return (
+                <div key={tx.id} className="p-5 hover:bg-white/30 transition-colors flex flex-col gap-3">
+                  <div className="flex justify-between items-start gap-4">
+                    <div className="flex items-center gap-3 overflow-hidden">
+                      <div className={`w-10 h-10 shrink-0 rounded-full flex items-center justify-center ${
+                        tx.type === 'income' ? 'bg-tertiary/10 text-tertiary' : 'bg-surface-container-high text-on-surface-variant'
+                      }`}>
+                        <Icon size={18} />
+                      </div>
+                      <div className="overflow-hidden">
+                        <div className="font-bold text-on-surface truncate text-sm" style={{ fontFamily: 'Manrope, sans-serif' }}>
+                          {tx.merchant}
+                        </div>
+                        <div className="text-xs text-on-surface-variant/70 mt-0.5 truncate">
+                          {tx.description}
+                        </div>
+                      </div>
+                    </div>
+                    <div className={`text-right font-extrabold whitespace-nowrap text-sm ${
+                      tx.type === 'income' ? 'text-tertiary' : 'text-error'
+                    }`} style={{ fontFamily: 'Manrope, sans-serif' }}>
+                      {tx.type === 'income' ? '+' : '-'}{formatCurrency(tx.amount)}
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center pl-13">
+                    <div className="flex gap-2 items-center flex-wrap">
+                      <CategoryBadge category={tx.category} />
+                      <span className="text-xs font-medium text-on-surface-variant whitespace-nowrap">{formatDate(tx.date)}</span>
+                    </div>
+                    {role === 'admin' && (
+                      <div className="flex items-center gap-1 shrink-0">
+                        <button 
+                          onClick={() => handleEdit(tx)}
+                          className="p-1.5 text-on-surface-variant hover:text-primary transition-colors bg-white/20 rounded-lg hover:bg-white"
+                          title="Edit"
+                        >
+                          <Edit size={14} />
+                        </button>
+                        <button 
+                          onClick={() => handleDelete(tx.id)}
+                          className="p-1.5 text-on-surface-variant hover:text-error transition-colors bg-white/20 rounded-lg hover:bg-white"
+                          title="Delete"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
 
         {/* Pagination */}
