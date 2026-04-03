@@ -266,7 +266,7 @@ export default function InsightsPage() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
           {/* ── Monthly Intelligence (Recharts Bar) — col-span-8 ── */}
-          <div className="md:col-span-8 glass-card rounded-3xl p-8 flex flex-col border border-white/40">
+          <div className="md:col-span-8 glass-card rounded-3xl p-6 md:p-8 flex flex-col border border-white/40">
             <div className="flex justify-between items-center mb-8">
               <div>
                 <h2
@@ -317,7 +317,7 @@ export default function InsightsPage() {
             </div>
 
             {/* Summary row */}
-            <div className="mt-6 grid grid-cols-3 gap-6 border-t border-outline-variant/20 pt-6">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-outline-variant/20 pt-6">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">
                   Total Spent
