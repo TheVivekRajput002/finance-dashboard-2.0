@@ -1,13 +1,16 @@
-const express = require("express");
-const dotenv = require("dotenv")
+import express from "express"
+import morgan from "morgan"
+import authRoute from "./routes/auth.route.js"
 
 const app = express();
 
-app.use(express.json)
-dotenv.config()
+app.use(express.json());
+app.use(morgan("dev"));
 
 app.get("/", (req,res) => {
     res.send("hello dost")
 });
 
-module.exports = app
+app.use("/api/auth", authRoute)
+
+export default app

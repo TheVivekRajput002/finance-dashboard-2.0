@@ -1,12 +1,14 @@
-const mongoose = require("mongoose");
+
+import mongoose from "mongoose";
+import { config } from "../config/config.js";
 
 async function connectDB(){
     try {
-        await mongoose.connect(process.env.MONGODB_URI)
+        await mongoose.connect(config.MONGODB_URI)
         console.log("database connected")
     } catch (error) {
         console.log("database not connected:", error)
     }
 }
 
-module.exports = connectDB
+export default connectDB
