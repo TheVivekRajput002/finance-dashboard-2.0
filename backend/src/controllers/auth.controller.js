@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken"
 import { config } from '../config/config.js'
 import sessionModel from "../models/session.model.js"
 import { networkInterfaces } from "os"
+import { sendEmail } from "../services/email.service.js"
 
 export async function register(req, res) {
     const { username, email, password } = req.body
@@ -111,14 +112,14 @@ export async function refreshToken(req, res) {
 
     const decoded = jwt.verify(refreshToken, config.JWT_SECRET);
 
-     const refreshTokenHash = crypto.hash("sha256").update(refreshToken).digest("hex");
+    const refreshTokenHash = crypto.hash("sha256").update(refreshToken).digest("hex");
 
     const session = await sessionModel.findOne({
         refreshTokenHash,
         revoked: false
     })
 
-    
+
     if (!session) {
         return res.status(400).json({
             message: "Invalid refresh token"
@@ -187,6 +188,68 @@ export async function logout(req, res) {
 
     res.status(200).json({
         message: "logged out successfully"
+    })
+}
+
+export async function login(req, res) {
+    const { email, password } = req.body
+
+    const user = await userModel.findOne({ email });
+
+    if (!user) {
+        return res.status("401").json({
+            message: "invalid email or password"
+        })
+    }
+
+    const hashedPassword = crypto.createHash("sha256").update(password).digest("hex");
+
+    const isPasswordCorrect = hashedPassword === user.password
+
+    if (!isPasswordCorrect) {
+        return res.status(401).json({
+            message: "invalid email or password"
+        })
+    }
+
+    const refreshToken = jwt.sign({
+        id: user._id
+    },
+        config.JWT_SECRET,
+        {
+            expiresIn: "7d"
+        }
+    )
+
+    const refreshTokenHash = crypto.createHash("sha256").update(refreshToken).digest("hex")
+
+    const session = await sessionModel.create({
+        user: user._id,
+        refreshTokenHash,
+        ip: req.ip,
+        userAgent: req.headers["user-agent"]
+    })
+
+    const accessToken = jwt.sign({
+        id: user._id,
+        sessonId: session._id
+    }, config.JWT_SECRET,
+        {
+            expiresIn: "15m"
+        }
+    )
+
+    res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+        maxAge: 7 * 24 * 60 * 60 * 1000
+    })
+
+    res.status(200).json({
+        message: "user logged in successfully",
+        user,
+        accessToken
     })
 }
 
